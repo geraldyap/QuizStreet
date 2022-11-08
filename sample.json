@@ -1,101 +1,52 @@
-{
-	"response_code": 0,
-	"results": [
-		{
-			"category": "Entertainment: Video Games",
-			"type": "multiple",
-			"difficulty": "medium",
-			"question": "Killing Floor started as a mod for which Unreal Engine 2 game?",
-			"correct_answer": "Unreal Tournament 2004",
-			"incorrect_answers": [
-				"Deus Ex: Invisible War",
-				"Unreal Tournament 3",
-				"Postal"
-			]
-		},
-		{
-			"category": "General Knowledge",
-			"type": "multiple",
-			"difficulty": "easy",
-			"question": "Which best selling toy of 1983 caused hysteria, resulting in riots breaking out in stores?",
-			"correct_answer": "Cabbage Patch Kids",
-			"incorrect_answers": ["Transformers", "Care Bears", "Rubik&rsquo;s Cube"]
-		},
-		{
-			"category": "Entertainment: Video Games",
-			"type": "multiple",
-			"difficulty": "medium",
-			"question": "Of the following space shooter games, which came out first?",
-			"correct_answer": "Space Invaders",
-			"incorrect_answers": ["Galaxian", "Galaga", "Sinistar"]
-		},
-		{
-			"category": "Science: Computers",
-			"type": "multiple",
-			"difficulty": "medium",
-			"question": "What is known as &quot;the brain&quot; of the Computer?",
-			"correct_answer": "Central Processing Unit",
-			"incorrect_answers": [
-				"Motherboard",
-				"Graphics Processing Unit",
-				"Keyboard"
-			]
-		},
-		{
-			"category": "Vehicles",
-			"type": "multiple",
-			"difficulty": "easy",
-			"question": "Which car tire manufacturer is famous for its &quot;Eagle&quot; brand of tires, and is the official tire supplier of NASCAR?",
-			"correct_answer": "Goodyear",
-			"incorrect_answers": ["Pirelli", "Bridgestone", "Michelin"]
-		},
-		{
-			"category": "Entertainment: Video Games",
-			"type": "multiple",
-			"difficulty": "hard",
-			"question": "In the &quot;Halo&quot; series, what is the name of the race of aliens humans refer to as &quot;Grunts&quot;?",
-			"correct_answer": "Unggoy",
-			"incorrect_answers": ["Huragok", "Sangheili", "Yanme&#039;e"]
-		},
-		{
-			"category": "Entertainment: Video Games",
-			"type": "multiple",
-			"difficulty": "medium",
-			"question": "In &quot;Call Of Duty: Zombies&quot;, completing which map&#039;s easter egg will reward you with the achievement, &quot;Time Travel Will Tell&quot;?",
-			"correct_answer": "Shangri-La",
-			"incorrect_answers": ["Ascension", "Moon", "Die Rise"]
-		},
-		{
-			"category": "General Knowledge",
-			"type": "multiple",
-			"difficulty": "medium",
-			"question": "What is the star sign of someone born on Valentines day?",
-			"correct_answer": "Aquarius",
-			"incorrect_answers": ["Pisces", "Capricorn", "Scorpio"]
-		},
-		{
-			"category": "Entertainment: Music",
-			"type": "multiple",
-			"difficulty": "medium",
-			"question": "Which novelty band was best known for their UK chart hits &quot;Combine Harvester&quot; and &quot;I Am a Cider Drinker&quot; in 1976?",
-			"correct_answer": "The Wurzels",
-			"incorrect_answers": [
-				"Goldie Lookin Chain",
-				"Bonzo Dog Doo-Dah Band",
-				"The Firm"
-			]
-		},
-		{
-			"category": "General Knowledge",
-			"type": "multiple",
-			"difficulty": "medium",
-			"question": "What are the three starter Pokemon available in Pokemon Black and White?",
-			"correct_answer": "Snivy, Tepig, Oshawott",
-			"incorrect_answers": [
-				"Snivy, Fennekin, Froakie",
-				"Chespin, Tepig, Froakie",
-				"Chespin, Fennekin, Oshawott"
-			]
-		}
-	]
-}
+[
+	{
+	  "category": "general",
+	  "question": "What is the science that deals with the motion of projectiles",
+	  "answer": "Ballistics"
+	},
+	{
+	  "category": "historyholidays",
+	  "question": "*Arnold Schwarzenegger made his film debut in 1974 In What Movie * ",
+	  "answer": "*pumping Iron.*"
+	},
+	{
+	  "category": "historyholidays",
+	  "question": "\"Who invented the Christmas Cracker? (\"\"George Cracker\"\", \"\"Tom Smith\"\", \"\"Thomas Edison\"\", \"\"John Bell\"\" \" ",
+	  "answer": "Tom Smith"
+	},
+	{
+	  "category": "",
+	  "question": "The old farming adage \"knee high by the fourth of July\" usually refers to the approximate height of what crop?",
+	  "answer": "Corn"
+	},
+	{
+	  "category": "general",
+	  "question": "Where is the arch of hadrian",
+	  "answer": "Athens"
+	},
+	{
+	  "category": "general",
+	  "question": "What does \"mit\"stand for",
+	  "answer": "Massachusetts Institute Of Technology"
+	},
+	{
+	  "category": "",
+	  "question": "By definition,crostini is an Italian appetizer that requires what main ingredient?",
+	  "answer": "Toasted Bread"
+	},
+	{
+	  "category": "",
+	  "question": "Influenza was named in the 15th century by Italians who believed it was caused by the influence of what?",
+	  "answer": "Stars And Planets"
+	},
+	{
+	  "category": "general",
+	  "question": "This is the animal that never learns, \"Trix are for kids!\"",
+	  "answer": "Rabbit"
+	},
+	{
+	  "category": "general",
+	  "question": "Old apothecaries weights 20 grains in a what",
+	  "answer": "Scruple"
+	}
+  ]
