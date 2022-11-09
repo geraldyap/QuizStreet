@@ -2,13 +2,25 @@ require('dotenv').config();
 const { Bot } = require('grammy');
 const { getQuestions } = require('./api.js');
 const utils = require('./utils.js');
+const fsPromise = require('fs/promises');
+const fs = require('fs');
 const bot = new Bot(process.env.BOT_TOKEN || '');
-const store = {};
+let store = {};
 let timer = null;
+const STORE_JSON = 'store.json';
 
 // TODOs - points scoring, options for quiz (no. of qns etc)
 // TODOS commands /next /help
 // TODOs find somewhere to host the bot
+
+const checkAndCreateStore = async () => {
+    if (!fs.existsSync(STORE_JSON)) {
+        await fsPromise.writeFile(STORE_JSON, JSON.stringify({}));
+    } else {
+        const storeJson = await fsPromise.readFile(STORE_JSON);
+        store = JSON.parse(storeJson);
+    }
+}
 
 const showHints = async (chat, question, answer, iteration, prevHint = {}) => {
     if (store[chat.id].quizStart && !store[chat.id].goNext) {
@@ -86,25 +98,50 @@ bot.command('help', async ctx => {
     await ctx.reply('Show list of help commands here: TODO')
 })
 
+bot.command('points', async ctx => {
+    const chat = ctx.chat;
+    const id = chat.id;
+    const storeJson = await fsPromise.readFile(STORE_JSON);
+    const parsed = JSON.parse(storeJson);
+    if (parsed[id] && parsed[id].points) {
+        const points = parsed[id].points;
+        await ctx.reply('Showing the points leaderboard in the channel now:');
+        await bot.api.sendMessage(id, `<b>${JSON.stringify(points)}</b>`, { parse_mode: "HTML" });
+    } else {
+        await ctx.reply('No points leaderboard to show, type /start to begin the quiz!')
+    }
+})
+
 bot.on("message", async (ctx) => {
     try {
         const chat = ctx.chat;
-        if (!store[chat.id] || !store[chat.id].quizStart || !ctx.msg.text) return false;
-        const index = store[chat.id].index;
-        const answer = store[chat.id].questions[index - 1].answer;
+        const id = chat.id;
+        if (!store[id] || !store[id].quizStart || !ctx.msg.text) return false;
+        const index = store[id].index;
+        const answer = store[id].questions[index - 1].answer;
         console.log(`User: ${ctx.from.first_name}, Answer: ${ctx.msg.text}, Correct answer: ${answer}`);
         if (answer.toLowerCase() === ctx.msg.text.toLowerCase()) {
-            store[chat.id].index += 1;
-            store[chat.id].goNext = true;
-            if (store[chat.id].points[ctx.from.first_name]) {
-                store[chat.id].points[ctx.from.first_name] += 1;
+            store[id].index += 1;
+            store[id].goNext = true;
+            if (store[id].points[ctx.from.first_name]) {
+                store[id].points[ctx.from.first_name] += 1;
             } else {
-                store[chat.id].points[ctx.from.first_name] = 1;
+                store[id].points[ctx.from.first_name] = 1;
             }
-            await bot.api.sendMessage(chat.id, `✅ Yes, <b>${answer}</b>!\n\n🏅 ${ctx.from.first_name} +1`, {parse_mode: "HTML"})
+            await bot.api.sendMessage(id, `✅ Yes, <b>${answer}</b>!\n\n🏅 ${ctx.from.first_name} +1`, {parse_mode: "HTML"})
             timer.cancel();
             timer = null;
-            throw new Error('test')
+
+            // save to store
+            // const toSave = { id, title: store[id].title, type: store[id].type, quizStart: store[id].quizStart, points: store[id].points };
+            const toSave = store[id];
+            const storeJson = await fsPromise.readFile(STORE_JSON);
+            let json = {};
+            if (Object.keys(storeJson).length) {
+                json = {...JSON.parse(storeJson)};
+            }
+            json[id] = toSave;
+            await fsPromise.writeFile(STORE_JSON, JSON.stringify(json));
         }
     } catch (e) {
         console.error(e);
@@ -113,4 +150,5 @@ bot.on("message", async (ctx) => {
 })
 
 bot.start();
+checkAndCreateStore();
 console.log("Started")

@@ -18,6 +18,9 @@ npm i
 node app.js
 ```
 
+## Notes for me
+In glitch, need to add .env and create store.json file with {} (check on this)
+
 ## TODOs
 
 alot of shit
