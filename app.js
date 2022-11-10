@@ -128,7 +128,7 @@ bot.on("message", async (ctx) => {
             } else {
                 store[id].points[ctx.from.first_name] = 1;
             }
-            await bot.api.sendMessage(id, `✅ Yes, <b>${answer}</b>!\n\n🏅 ${ctx.from.first_name} +1`, {parse_mode: "HTML"})
+            await bot.api.sendMessage(id, `✅ Yes, <b>${answer}</b>!\n\n🏅 ${ctx.from.first_name} +1 .... Jing Shi is a hacker`, {parse_mode: "HTML"})
             timer.cancel();
             timer = null;
 
